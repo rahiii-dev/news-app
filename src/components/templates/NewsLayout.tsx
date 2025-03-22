@@ -9,7 +9,7 @@ interface NewsLayoutProps {
 const NewsLayout = ({ children, onToggleView }: NewsLayoutProps) => {
   return (
     <div className="flex h-screen bg-gray-200">
-      <aside className="w-90 h-full bg-white shadow-2xl rounded-e-[1.5vw] overflow-hidden">
+      <aside className="h-full min-w-84">
         <SidePanel onToggleView={onToggleView} />
       </aside>
 
