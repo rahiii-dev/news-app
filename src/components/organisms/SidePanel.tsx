@@ -24,7 +24,7 @@ const SidePanel = ({ onToggleView }: SidePanelProps) => {
       {/* Overlay */}
       {isExpanded && (
         <div
-          className="absolute h-screen w-screen bg-black/50 backdrop-blur-sm transition-opacity duration-300 z-0 cursor-pointer"
+          className="absolute h-screen w-screen bg-black/50 backdrop-blur-sm transition-opacity duration-300 z-1 cursor-pointer"
           onClick={handleClose}
         />
       )}

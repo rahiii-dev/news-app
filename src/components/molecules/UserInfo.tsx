@@ -12,7 +12,7 @@ interface UserInfoProps {
 const UserInfo = ({ imageUrl, altText = "User", className }: UserInfoProps) => {
   return (
     <div className={twMerge("flex items-center p-4 bg-white rounded-lg shadow-lg gap-3", className)}>
-      <Avatar src={imageUrl} alt={altText}/>
+      <Avatar src={imageUrl} alt={altText} className="size-10"/>
       <div>
         <Title level={3}>Hi, Reader</Title>
         <Text size="sm" className="font-medium">Here's your News!</Text>
