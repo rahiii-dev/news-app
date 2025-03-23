@@ -2,6 +2,7 @@ import UserInfo from "../molecules/UserInfo";
 import ViewToggle from "../molecules/ViewToggle";
 import Feedback from "../molecules/Feedback";
 import { useState } from "react";
+import FeedbackForm from "./FeedbackForm";
 
 interface SidePanelProps {
   onToggleView: (view: "grid" | "list") => void;
@@ -34,7 +35,7 @@ const SidePanel = ({ onToggleView }: SidePanelProps) => {
         {/* Left Section */}
         <div className="flex flex-col gap-6 min-w-70 ps-4">
           <UserInfo imageUrl="https://randomuser.me/api/portraits/women/5.jpg" />
-          
+
           {!isExpanded && <ViewToggle onToggle={onToggleView} />}
 
           <Feedback buttonProps={{
@@ -44,10 +45,8 @@ const SidePanel = ({ onToggleView }: SidePanelProps) => {
         </div>
 
         {/* Right Section */}
-        <div
-          className={`transition-all duration-300 ${isExpanded ? "opacity-100 w-90 border-1" : "opacity-0 w-0"}`}
-        >
-          <h1>Form Place Holder</h1>
+        <div className={`transition-all duration-300 ${isExpanded ? "opacity-100" : "opacity-0 w-0"}`}>
+          <FeedbackForm onSubmitSuccess={handleClose}/>
         </div>
       </div>
 
