@@ -1,12 +1,10 @@
 import { twMerge } from "tailwind-merge";
 
-export interface ButtonProps {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
 }
 
-const Button = ({ children, className, onClick }: ButtonProps) => {
+const Button = ({ children, className, ...props }: ButtonProps) => {
   return (
     <button
       className={twMerge(
@@ -15,7 +13,7 @@ const Button = ({ children, className, onClick }: ButtonProps) => {
         before:shadow-[inset_0_2px_6px_rgba(0,0,0,0.2)] relative overflow-hidden`,
         className
       )}
-      onClick={onClick}
+      {...props}
     >
       {children}
     </button>

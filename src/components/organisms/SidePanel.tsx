@@ -23,7 +23,7 @@ const SidePanel = ({ onToggleView }: SidePanelProps) => {
       {/* Overlay */}
       {isExpanded && (
         <div
-          className="absolute h-screen w-screen bg-black/50 backdrop-blur-sm transition-opacity duration-300 z-0"
+          className="absolute h-screen w-screen bg-black/50 backdrop-blur-sm transition-opacity duration-300 z-0 cursor-pointer"
           onClick={handleClose}
         />
       )}
@@ -34,8 +34,13 @@ const SidePanel = ({ onToggleView }: SidePanelProps) => {
         {/* Left Section */}
         <div className="flex flex-col gap-6 min-w-70 ps-4">
           <UserInfo imageUrl="https://randomuser.me/api/portraits/women/5.jpg" />
+          
           {!isExpanded && <ViewToggle onToggle={onToggleView} />}
-          <Feedback onButtonClick={handleFeedbackClick} />
+
+          <Feedback buttonProps={{
+            onClick: handleFeedbackClick,
+            className: `${isExpanded && "bg-red-300 hover:bg-red-200"}`
+          }} />
         </div>
 
         {/* Right Section */}
@@ -45,7 +50,7 @@ const SidePanel = ({ onToggleView }: SidePanelProps) => {
           <h1>Form Place Holder</h1>
         </div>
       </div>
-      
+
     </div>
   );
 };
