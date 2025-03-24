@@ -3,14 +3,13 @@ import SidePanel from "../organisms/SidePanel";
 
 interface NewsLayoutProps {
   children: React.ReactNode;
-  onToggleView: (view: "grid" | "list") => void;
 }
 
-const NewsLayout = ({ children, onToggleView }: NewsLayoutProps) => {
+const NewsLayout = ({ children }: NewsLayoutProps) => {
   return (
     <div className="flex h-screen bg-gray-200">
       <aside className="h-full min-w-84">
-        <SidePanel onToggleView={onToggleView} />
+        <SidePanel/>
       </aside>
 
       <main className="flex-1 overflow-auto">{children}</main>

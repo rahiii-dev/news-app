@@ -3,16 +3,19 @@ import { GridIcon, ListIcon } from "lucide-react";
 import IconButton from "./IconButton";
 import Title from "../atoms/Title";
 import { twMerge } from "tailwind-merge";
+import { ViewType } from "../../types/view.interface";
+
 
 interface ViewToggleProps {
   className?: string;
-  onToggle: (view: "grid" | "list") => void;
+  defaultView?: ViewType;
+  onToggle: (view: ViewType) => void;
 }
 
-const ViewToggle = ({className, onToggle}: ViewToggleProps) => {
-  const [view, setView] = useState<"grid" | "list">("grid");
+const ViewToggle = ({className, onToggle, defaultView}: ViewToggleProps) => {
+  const [view, setView] = useState<ViewType>(defaultView || "grid");
 
-  const handleClick = (newView: "grid" | "list") => {
+  const handleClick = (newView: ViewType) => {
     setView(newView);
     onToggle(newView);
   };

@@ -2,6 +2,7 @@ import { ComponentType, useState } from 'react';
 
 interface WithIframeProps {
     url: string;
+    containerClass?: string;
 }
 
 function WithIframe<P extends object>(WrappedComponent: ComponentType<P>) {
@@ -9,7 +10,7 @@ function WithIframe<P extends object>(WrappedComponent: ComponentType<P>) {
         const [isOpen, setIsOpen] = useState(false);
 
         return (
-            <div className='w-full'>
+            <div className={props.containerClass}>
                 {/* Wrapped Component*/}
                 <div onClick={() => setIsOpen(true)} className="cursor-pointer h-full w-full">
                     <WrappedComponent {...props} />

@@ -3,12 +3,10 @@ import ViewToggle from "../molecules/ViewToggle";
 import Feedback from "../molecules/Feedback";
 import { useState } from "react";
 import FeedbackForm from "./FeedbackForm";
+import { useView } from "../../context/ViewContext";
 
-interface SidePanelProps {
-  onToggleView: (view: "grid" | "list") => void;
-}
-
-const SidePanel = ({ onToggleView }: SidePanelProps) => {
+const SidePanel = () => {
+  const {toggleView, view} = useView();
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleFeedbackClick = () => {
@@ -36,7 +34,7 @@ const SidePanel = ({ onToggleView }: SidePanelProps) => {
         <div className="flex flex-col gap-6 min-w-70 ps-4">
           <UserInfo imageUrl="https://randomuser.me/api/portraits/women/5.jpg" />
 
-          {!isExpanded && <ViewToggle onToggle={onToggleView} />}
+          {!isExpanded && <ViewToggle defaultView={view} onToggle={(view) => toggleView(view)} />}
 
           <Feedback buttonProps={{
             onClick: handleFeedbackClick,
