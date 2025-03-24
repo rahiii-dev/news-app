@@ -12,19 +12,36 @@ interface PhoneInputProps {
     disabled?: boolean;
     required?: boolean;
     value?: string;
-    onChange?: (value: string) => void;
+    countryCode?: string;
+    onChange?: (data: {value: string, countryCode: string}) => void;
 }
 
-const PhoneInput = ({ label = "Phone", inputClass, inputPlaceHolder, disabled, required, value, onChange, error }: PhoneInputProps) => {
-    const [selectedCountry, setSelectedCountry] = useState<null | {
-        code: string;
-        dialCode: string;
-        flag: string;
-    }>(null);
-
-    const [phoneNumber, setPhoneNumber] = useState(value || "");
+const PhoneInput = ({ 
+    label = "Phone", 
+    inputClass, 
+    inputPlaceHolder, 
+    disabled, 
+    required, 
+    value = "", 
+    countryCode, 
+    onChange, 
+    error 
+}: PhoneInputProps) => {
+    const [selectedCountry, setSelectedCountry] = useState(
+        countries.find((c) => c.dialCode === countryCode) || null
+    );
+    
+    const [phoneNumber, setPhoneNumber] = useState(value);
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        setPhoneNumber(value);
+    }, [value]);
+
+    useEffect(() => {
+        setSelectedCountry(countries.find((c) => c.dialCode === countryCode) || null);
+    }, [countryCode]);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -39,6 +56,7 @@ const PhoneInput = ({ label = "Phone", inputClass, inputPlaceHolder, disabled, r
     const handleSelectCountry = (country: any) => {
         setSelectedCountry(country);
         setShowDropdown(false);
+        onChange?.({value: phoneNumber, countryCode: country.dialCode});
     };
 
     return (
@@ -66,11 +84,11 @@ const PhoneInput = ({ label = "Phone", inputClass, inputPlaceHolder, disabled, r
                     <Input
                         placeholder={inputPlaceHolder}
                         className={inputClass}
-                        value={selectedCountry ? `${selectedCountry.dialCode}${phoneNumber}` : phoneNumber}
+                        value={phoneNumber}
                         onChange={(e) => {
-                            const number = e.target.value.replace(selectedCountry?.dialCode || "", "").trim();
+                            const number = e.target.value.trim();
                             setPhoneNumber(number);
-                            onChange?.(e.target.value);
+                            onChange?.({value: number, countryCode:selectedCountry?.dialCode || ""});
                         }}
                         disabled={disabled}
                         required={required}

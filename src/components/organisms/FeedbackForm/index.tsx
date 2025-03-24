@@ -23,6 +23,9 @@ const FeedbackForm = ({ onSubmitSuccess }: FeedbackFormProps) => {
         reset,
     } = useForm<FeedbackFormData>({
         resolver: zodResolver(feedbackSchema),
+        defaultValues: {
+            mobile: { countryCode: "+91", number: "" },
+        },
     });
 
     const onSubmit = (_: FeedbackFormData) => {
@@ -85,8 +88,12 @@ const FeedbackForm = ({ onSubmitSuccess }: FeedbackFormProps) => {
                         label="Mobile Number"
                         inputClass="w-[300px] shadow-sm"
                         inputPlaceHolder="Enter Your Mobile Number"
-                        value={watch("mobile")}
-                        onChange={(value) => setValue("mobile", value)}
+                        value={watch("mobile")?.number}
+                        countryCode={watch("mobile")?.countryCode}
+                        onChange={({ value, countryCode }) => {
+                            setValue("mobile", { number: value, countryCode }, { shouldValidate: true });
+                        }}
+                        error={errors.mobile?.number?.message}
                     />
                 </div>
 

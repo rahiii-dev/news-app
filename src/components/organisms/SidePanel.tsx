@@ -29,7 +29,7 @@ const SidePanel = () => {
 
       {/* Panel */}
       <div
-        className={`${isExpanded ? "max-w-[90vw]" : "max-w-84"} absolute left-0 top-0 h-full shadow-2xl rounded-e-[1.5vw] px-6 py-14 bg-gray-200 flex gap-20 transition-[max-width] duration-300 ease-in-out min-w-84 overflow-hidden z-10`}>
+        className={`${isExpanded ? "max-w-[90vw]" : "max-w-84"} absolute left-0 top-0 h-full shadow-2xl rounded-e-[1.5vw] px-6 pt-14 bg-gray-200 flex gap-20 transition-[max-width] duration-300 ease-in-out min-w-84 overflow-hidden z-10`}>
         {/* Left Section */}
         <div className="flex flex-col gap-6 min-w-70 ps-4">
           <UserInfo imageUrl="https://randomuser.me/api/portraits/women/5.jpg" />
@@ -43,7 +43,7 @@ const SidePanel = () => {
         </div>
 
         {/* Right Section */}
-        <div className={`transition-all duration-300 ${isExpanded ? "opacity-100" : "opacity-0 w-0"}`}>
+        <div className={`transition-all duration-300 ${isExpanded ? "opacity-100 overflow-y-auto pb-4" : "opacity-0 w-0"}`}>
           <FeedbackForm onSubmitSuccess={handleClose}/>
         </div>
       </div>

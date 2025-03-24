@@ -8,7 +8,7 @@ interface NewsLayoutProps {
 const NewsLayout = ({ children }: NewsLayoutProps) => {
   return (
     <div className="flex h-screen bg-gray-200">
-      <aside className="h-full min-w-84">
+      <aside className="h-screen min-w-84">
         <SidePanel/>
       </aside>
 
