@@ -1,6 +1,6 @@
 import { LucideIcon } from "lucide-react";
 import { twMerge } from "tailwind-merge";
-import Button from "../atoms/Buttton";
+import Button from "../atoms/Button";
 
 interface IconButtonProps {
   icon: LucideIcon;

@@ -1,4 +1,4 @@
-import Button from "../atoms/Buttton";
+import Button from "../atoms/Button";
 import Title from "../atoms/Title";
 
 interface FeedbackProps {

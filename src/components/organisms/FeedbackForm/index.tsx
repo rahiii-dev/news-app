@@ -6,7 +6,7 @@ import Title from "../../atoms/Title";
 import Text from "../../atoms/Text";
 import LabeledInput from "../../molecules/LabeledInput";
 import LabeledTextArea from "../../molecules/LabeledTextArea";
-import Button from "../../atoms/Buttton";
+import Button from "../../atoms/Button";
 import PhoneInput from "../../molecules/PhoneInput";
 
 interface FeedbackFormProps {
