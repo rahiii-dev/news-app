@@ -21,7 +21,6 @@ Create a `.env` file and add:
 VITE_NEWS_API_KEY=your_api_key_here
 ```
 Get your API key from [NewsAPI](https://newsapi.org) and replace `your_api_key_here`.
-```
 
 ### 4️⃣ Run the Development Server
 ```sh
